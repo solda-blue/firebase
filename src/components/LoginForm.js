@@ -3,11 +3,16 @@ import React, { useState } from "react";
 import { auth } from "../database/firebase";
 //
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLogin } from "../store";
 
 const LoginForm = () => {
     // input 태그에 있는 값을 가져오는 state
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     // react가 실행되는 동안에 저장될 user데이터
     // accessToken은 세션이나 브라우저에 저장해서 로그인확인
@@ -28,6 +33,9 @@ const LoginForm = () => {
                 email : user.email,
                 displayName : user.displayName,
             });
+            navigate('/');
+            alert('회원가입이 완료되었습니다.');
+
         })
         .catch((error) => {
             // 회원가입 실패 했을 시
@@ -48,6 +56,10 @@ const LoginForm = () => {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
             console.log('getLogin =>', user);
+            sessionStorage.setItem("TOKEN", user.accessToken);
+            dispatch(setLogin());
+            navigate('/');
+            alert('로그인 되었습니다.');
         }
         // 오류가 났을 때 실행할 코드
         // 오류가 나면 화면이 멈추는 것이 아니라
