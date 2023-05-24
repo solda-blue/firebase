@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,3 +26,4 @@ console.log(app);
 // 인증 서비스에 관한 내용 들고와서 사용
 
 export const auth = getAuth(app);
+export const db = getFirestore(app);
