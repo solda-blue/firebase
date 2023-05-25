@@ -17,6 +17,15 @@ const Spend = () => {
         price : 0
     });
 
+    useEffect(() => {
+        getToken();
+    }, [])
+
+    const getToken = () => {
+        let tt = auth.currentUser ? auth.currentUser.uid : null;
+        console.log('테스트 중 => ', tt);
+    }
+
     const {category, detail, price} = spend;
     const uQuery = query(collection(db, "spend"), where("username", "==", uid));
     
@@ -78,27 +87,33 @@ const Spend = () => {
     }
 
     return (
-        <div>
+        <div style={{width : "600px", padding : "20px"}}>
             <div>
-                <div>
-                    <label>카테고리</label>
-                    <select id="category" value={category} onChange={handleData}>
-                        <option value={"clothes"}>의</option>
-                        <option value={"food"}>식</option>
-                        <option value={"house"}>주</option>
+                <div style={{display : "flex"}}>
+                    <div style={{width : "80px"}}>
+                        <label>카테고리</label>
+                    </div>
+                    :&nbsp; <select id="category" value={category} onChange={handleData}>
+                        <option value={"clothes"}>의복</option>
+                        <option value={"food"}>식대</option>
+                        <option value={"house"}>주거</option>
                         <option value={"etc"}>기타</option>
                     </select>
                 </div>
-                <div>
-                    <label>상세</label>
-                    <input id="detail" type="text" value={detail} onChange={handleData} />
+                <div style={{display : "flex"}}>
+                    <div style={{width : "80px"}}>
+                        <label>상세</label>
+                    </div>
+                    :&nbsp; <input id="detail" type="text" value={detail} onChange={handleData} />
                 </div>
-                <div>
-                    <label>금액</label>
-                    <input id="price" type="number" value={price} onChange={handleData} />
+                <div style={{display : "flex"}}>
+                    <div style={{width : "80px"}}>
+                        <label>금액</label>
+                    </div>
+                    :&nbsp; <input id="price" step={100} type="number" value={price} min={0} onChange={handleData} />
                 </div>
+                <button onClick={addSpend}>눌러보셈</button>
             </div>
-            <button onClick={addSpend}>눌러보셈</button>
             <div>
                 <h4>지출 항목</h4>
                 <table>
@@ -118,6 +133,7 @@ const Spend = () => {
                                     <td>{tmp.detail}</td>
                                     <td>{tmp.price}</td>
                                     <td>{tmp.regdate}</td>
+                                    <td>{tmp.username}</td>
                                 </tr>
                             )
                         }
