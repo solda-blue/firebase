@@ -12,6 +12,7 @@ const Logout = () => {
         signOut(auth)
         .then(() => {
             sessionStorage.removeItem("TOKEN");
+            sessionStorage.removeItem("UID");
             dispatch(setLogout());
             navigate('/');
         }) // logout successful

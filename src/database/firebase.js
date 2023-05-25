@@ -20,7 +20,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-console.log(app);
+// console.log(app);
 
 // 사용하고자 하는 서비스를 들고와서 사용
 // 인증 서비스에 관한 내용 들고와서 사용

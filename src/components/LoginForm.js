@@ -33,8 +33,7 @@ const LoginForm = () => {
                 email : user.email,
                 displayName : user.displayName,
             });
-            navigate('/');
-            alert('회원가입이 완료되었습니다.');
+            alert('회원가입이 완료되었습니다. 로그인 하십시요');
 
         })
         .catch((error) => {
@@ -57,6 +56,7 @@ const LoginForm = () => {
             const user = userCredential.user;
             console.log('getLogin =>', user);
             sessionStorage.setItem("TOKEN", user.accessToken);
+            sessionStorage.setItem("UID", user.uid);
             dispatch(setLogin());
             navigate('/');
             alert('로그인 되었습니다.');
