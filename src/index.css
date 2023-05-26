@@ -11,3 +11,71 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Books */
+.container {
+
+}
+.book-header {
+  display: flex;
+  justify-content: center;
+}
+.book-header h2 {
+  text-align: center;
+}
+.insert-container{
+  display: flex;
+  justify-content: center;
+}
+.insert-field {
+  display: flex;
+  margin: 5px;
+}
+.insert-label {
+  min-width: 80px;
+}
+
+table {
+  border-spacing: 0;
+}
+.list-container {
+  display: flex;
+  justify-content: center;
+}
+.book-line:hover {
+  background-color: deeppink;
+  cursor: pointer;
+  color: white;
+}
+
+.book-line td {
+  padding: 0px 10px;
+}
+
+.modal-container {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: transparent;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(2px);
+}
+.modal-card {
+  padding: 10px;
+  position: relative;
+  top: -5%;
+  width: 400px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.memo-content {
+  padding: 0px 5px;
+  font-size: 0.8rem;
+  color: dimgrey;
+}
